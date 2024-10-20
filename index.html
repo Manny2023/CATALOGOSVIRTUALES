@@ -10,9 +10,12 @@
   <link rel="manifest" href="/manifest.json">
 
   <!-- Favicon e íconos -->
-  <link rel="icon" type="image/png" sizes="32x32" href="https://example.com/favicon-32x32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://example.com/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://example.com/favicon-16x16.png">
+  <link rel="icon" href="/ruta-al-logo/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="
+https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux68PadN_lIUO-774YjDf-ZSvWLsRqRrAOCqmNzRmNfo3UkNh_kKFeITDEhFiSpL77I7w5Ry7670YxxZtIWuRDpoRL9jUef6ycFzd8Mf-NPR710jg4xN8TMQAS6KbCXvRI0r57pm6rIBc1OHrUL83p_LUXCWVhNOLFo5qyEKqn8/s180/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKKdAL_4jH9recUZix18lMrP6dfqqUAcmfDFm9zwSELnq4MwJVMHY4wvNdIbyp1QEw0Gr8lTR61l2t4sufBah-tyLKcN0l2PEJz7ngIfT77CCm_09dacwx1Mw65BzUVZNVYrQrC08o76ULsCGBFgyXAAabVgAzcmS_Y6dMGUCyMQ58h_Y58bYnlMm1ZGI/s32/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJx1aVxE_89OAItrvjC5gwWs3Elb4koell3i5PZNbav6f7qsyRVbskA5zVUQnA1Ru8m2d5KbI_kCRbxc9oEDQz-WwNjlmLMqXw0R8NVVVL_NQFVXqEOwTBkNRoYFDQXpaOxmvuB70KgerTcxko1V8JhF4k0CgHARwrA5Sxd6gG_xHAK9syrsAAEPZhxk4/s16/favicon-16x16.png
+">
 
   <style>
     body {
@@ -72,8 +75,8 @@
     }
     main {
       padding: 20px;
-      margin-top: 20px;
-      text-align: center;
+      margin-top: 20px; /* Añadido para evitar que el contenido se superponga al menú */
+      text-align: center; /* Centrado del contenido */
     }
     main h1 {
       margin-bottom: 20px;
@@ -88,7 +91,6 @@
       width: 80%;
       max-width: 200px;
     }
-
     /* Banner de instalación */
     .install-banner {
       background-color: #333;
@@ -99,105 +101,105 @@
       bottom: 0;
       width: 100%;
       display: none; /* Inicialmente oculto */
-      z-index: 999; 
+      z-index: 999;
     }
     .install-banner button {
-      background-color: #6200ea; 
-      color: white; 
-      border: none; 
-      padding: 10px 20px; 
-      cursor: pointer; 
+      background-color: #6200ea;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
     }
     .install-banner button:hover {
-        background-color:#4500b3; 
+      background-color: #4500b3;
     }
-
     /* Responsive */
     @media screen and (max-width: 768px) {
-        header {
-            font-size:18px; 
-        }
-        nav a {
-            font-size :16px; 
-        }
+      header {
+        font-size: 18px;
+      }
+      nav a {
+        font-size: 16px;
+      }
     }
-    
-</style>
+  </style>
 </head>
 <body>
-<header>
-   <span class="menu-btn" onclick="openMenu()">☰</span>
-   Mi PWA Responsive con Imagen
-</header>
+  <header>
+    <span class="menu-btn" onclick="openMenu()">☰</span>
+    Mi PWA Responsive con Imagen
+  </header>
 
-<nav id="myNav">
-   <a href="javascript:void(0)" class="menu-close-btn" onclick="closeMenu()">&times;</a>
-   <img src="https://example.com/menu-image.png" alt="Imagen del Menú">
-   <a href="#home">Inicio</a>
-   <a href="#services">Servicios</a>
-   <a href="#contact">Contacto</a>
-   <a href="#about">Acerca de</a>
-</nav>
+  <nav id="myNav">
+    <a href="javascript:void(0)" class="menu-close-btn" onclick="closeMenu()">&times;</a>
+    <!-- Imagen del menú -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTShEIt3vRu7H_cFeBJuHuvGtlJT1MH5zB8GDuOVytHKi7ts9tTCpX4hwhvL7Yy9sL1XEApjQCWq9yD_RZ_DUkDZQ12cdhZQL2kumtcKoc8CbHb6AH-ZAqitAYTE7DQng1KkNnUnN1I5AY0U2g7dcnABbNFcnbXBKTprf4GFATPRG2s6MgE09ZaHHUDxQ/s192/android-chrome-192x192.png" alt="Imagen del Menú">
+    <a href="#home">Inicio</a>
+    <a href="#services">Servicios</a>
+    <a href="#contact">Contacto</a>
+    <a href="#about">Acerca de</a>
+  </nav>
 
-<main>
-   <h1>CATALOGOS VIRTUALES</h1>
-   <p>A continuación, encontrarás algunos botones con imágenes. Haz clic en ellos para más opciones.</p>
+  <main>
+    <h1>CATALOGOS VIRTUALES</h1>
+    <p>A continuación, encontrarás algunos botones con imágenes. Haz clic en ellos para más opciones.</p>
+    
+    <!-- Botones de imagen en fila -->
+    <div class="button-container">
+      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 1"></a>
+      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 2"></a>
+      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 3"></a>
+    </div>
+  </main>
+    <!-- Banner de instalación -->
+    <div id="install-banner">
+        <p style="margin: 0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
+        <button id="install-button">Instalar</button>
+    </div>
 
-   <div class="button-container">
-       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 1"></a>
-       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 2"></a>
-       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 3"></a>
-   </div>
-</main>
+    <script src="main.js"></script>
+    <script>
+        // Este bloque registra el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('worker.js?' + Math.random())
+                .then(function(registration) {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Error al registrar el Service Worker:', error);
+                });
+            });
+        }
 
-<div class="install-banner" id="installBanner">
-   <p>¡Para mejor funcionamiento, instala nuestra PWA en tu dispositivo!</p>
-   <button id="installButton">Instalar</button>
-</div>
+        // Código para manejar el banner de instalación
+        let deferredPrompt;
 
-<script>
-// Funciones para abrir y cerrar el menú
-function openMenu() {
-   document.getElementById("myNav").style.width = "250px";
-}
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallBanner();
+        });
 
-function closeMenu() {
-   document.getElementById("myNav").style.width = "0";
-}
+        function showInstallBanner() {
+            const installBanner = document.getElementById('install-banner');
+            installBanner.style.display = 'block';
 
-// Registro del Service Worker
-if ('serviceWorker' in navigator) {
-   window.addEventListener('load', () => {
-       navigator.serviceWorker.register('/service-worker.js')
-       .then((registration) => {
-           console.log('Service Worker registrado con éxito:', registration);
-       })
-       .catch((error) => {
-           console.error('Error al registrar el Service Worker:', error);
-       });
-   });
-}
-
-// Manejo del evento beforeinstallprompt
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-   e.preventDefault(); // Previene que aparezca el prompt por defecto
-   deferredPrompt = e; // Guarda el evento
-   document.getElementById('installBanner').style.display = 'block'; // Muestra el banner de instalación
-});
-
-// Evento para el botón de instalación
-document.getElementById('installButton').addEventListener('click', () => {
-   if (deferredPrompt) {
-       deferredPrompt.prompt(); // Muestra el prompt de instalación
-       deferredPrompt.userChoice.then((choiceResult) => {
-           console.log(choiceResult.outcome);
-           deferredPrompt = null; // Limpia la variable
-           document.getElementById('installBanner').style.display = 'none'; // Oculta el banner
-       });
-   }
-});
-</script>
+            const installButton = document.getElementById('install-button');
+            installButton.addEventListener('click', () => {
+                installBanner.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('Usuario aceptó la instalación');
+                    } else {
+                        console.log('Usuario rechazó la instalación');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        }
+    </script>
 </body>
 </html>
