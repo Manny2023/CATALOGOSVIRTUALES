@@ -1,16 +1,11 @@
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response; // Si está en la caché, lo devuelve
-        }
-        return fetch(event.request).then((networkResponse) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone()); // Actualiza la caché
-            return networkResponse; // Devuelve la respuesta de red
-          });
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('worker.js') // Cambia la ruta si es necesario
+        .then(function(registration) {
+            console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch(function(error) {
+            console.log('Error al registrar el Service Worker:', error);
         });
-      })
-  );
-});
+    });
+}
