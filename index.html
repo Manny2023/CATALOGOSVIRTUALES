@@ -87,125 +87,134 @@
     .button-container img {
       margin: 10px 0;
       width: 80%;
-      max-width: 200px;
+      max-width: 200px; 
     }
+    
     /* Banner de instalación centrado en la parte superior */
     .install-banner {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      top: 0; /* Posición en la parte superior */
-      left: 50%; /* Centramos horizontalmente */
-      transform: translateX(-50%); /* Ajuste para centrarlo completamente */
-      width: 100%; /* Ancho total para pantallas pequeñas */
-      max-width: 600px; /* Ancho máximo para pantallas grandes */
-      display: none; /* Inicialmente oculto */
-      z-index: 999; /* Por encima de otros elementos */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar el banner */
+        background-color: #333; 
+        color: white; 
+        text-align: center; 
+        padding: 10px; 
+        position: fixed; 
+        top: 0; 
+        left: 50%; 
+        transform: translateX(-50%); 
+        width: calc(100% - 20px); /* Ancho total para pantallas pequeñas */
+        max-width: 600px; /* Ancho máximo para pantallas grandes */
+        display:none; /* Inicialmente oculto */
+        z-index:999; /* Por encima de otros elementos */
+        box-shadow :0 4px 6px rgba(0,0,0,0.1); /* Sombra para destacar el banner */
     }
+    
     .install-banner button {
-      background-color: #6200ea;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
+        background-color:#6200ea; 
+        color:white; 
+        border:none; 
+        padding :10px 20px; 
+        cursor:pointer; 
+        font-size :16px; 
     }
+
     .install-banner button:hover {
-      background-color: #4500b3;
+        background-color:#4500b3; 
     }
+
     /* Responsive */
-    @media screen and (max-width: 768px) {
-      header {
-        font-size: 18px;
-      }
-      nav a {
-        font-size: 16px;
-      }
+    @media screen and (max-width :768px) {
+        header {
+            font-size :18px; 
+        }
+        
+        nav a {
+            font-size :16px; 
+        }
+        
     }
-  </style>
+    
+</style>
 </head>
 <body>
-  <header>
-    <span class="menu-btn" onclick="openMenu()">☰</span>
-    CATALOGOS VIRTUALES
-  </header>
+<header>
+   <span class="menu-btn" onclick="openMenu()">☰</span>
+   CATALOGOS VIRTUALES
+</header>
 
-  <nav id="myNav">
-    <a href="javascript:void(0)" class="menu-close-btn" onclick="closeMenu()">&times;</a>
-    <!-- Imagen del menú -->
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTShEIt3vRu7H_cFeBJuHuvGtlJT1MH5zB8GDuOVytHKi7ts9tTCpX4hwhvL7Yy9sL1XEApjQCWq9yD_RZ_DUkDZQ12cdhZQL2kumtcKoc8CbHb6AH-ZAqitAYTE7DQng1KkNnUnN1I5AY0U2g7dcnABbNFcnbXBKTprf4GFATPRG2s6MgE09ZaHHUDxQ/s192/android-chrome-192x192.png" alt="Imagen del Menú">
-    <a href="#home">Inicio</a>
-    <a href="#services">Servicios</a>
-    <a href="#contact">Contacto</a>
-    <a href="#about">Acerca de</a>
-  </nav>
+<nav id="myNav">
+   <a href="javascript:void(0)" class="menu-close-btn" onclick="closeMenu()">&times;</a>
+   <!-- Imagen del menú -->
+   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTShEIt3vRu7H_cFeBJuHuvGtlJT1MH5zB8GDuOVytHKi7ts9tTCpX4hwhvL7Yy9sL1XEApjQCWq9yD_RZ_DUkDZQ12cdhZQL2kumtcKoc8CbHb6AH-ZAqitAYTE7DQng1KkNnUnN1I5AY0U2g7dcnABbNFcnbXBKTprf4GFATPRG2s6MgE09ZaHHUDxQ/s192/android-chrome-192x192.png" alt="Imagen del Menú">
+   <a href="#home">Inicio</a>
+   <a href="#services">Servicios</a>
+   <a href="#contact">Contacto</a>
+   <a href="#about">Acerca de</a>
+</nav>
 
-  <main>
-    <h1>CATALOGOS VIRTUALES</h1>
-    <p>A continuación, encontrarás algunos botones con imágenes. Haz clic en ellos para más opciones.</p>
-    
-    <!-- Botones de imagen en fila -->
-    <div class="button-container">
-      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 1"></a>
-      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 2"></a>
-      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 3"></a>
-    </div>
-  </main>
+<main>
+   <h1>CATALOGOS VIRTUALES</h1>
+   <p>A continuación, encontrarás algunos botones con imágenes. Haz clic en ellos para más opciones.</p>
 
-  <!-- Banner de instalación centrado en la parte superior -->
-  <div id="install-banner" class="install-banner">
-    <p style="margin: 0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
-    <button id="install-button">Instalar</button>
-  </div>
+   <!-- Botones de imagen en fila -->
+   <div class="button-container">
+       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 1"></a>
+       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 2"></a>
+       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 3"></a>
+   </div>
+</main>
 
-  <script>
-    // Funciones para abrir y cerrar el menú
-    function openMenu() {
-      document.getElementById("myNav").style.width = "250px"; // Ancho del menú
-    }
+<!-- Banner de instalación centrado en la parte superior -->
+<div id="install-banner" class="install-banner">
+   <p style="margin :0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
+   <button id="install-button">Instalar</button>
+</div>
 
-    function closeMenu() {
-      document.getElementById("myNav").style.width = "0"; // Cierra el menú
-    }
+<script>
+// Funciones para abrir y cerrar el menú
+function openMenu() {
+   document.getElementById("myNav").style.width = "250px"; // Ancho del menú
+}
 
-    // Este bloque registra el Service Worker
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('worker.js') // Asegúrate que worker.js esté en la misma carpeta
-            .then(function(registration) {
-                console.log('Service Worker registrado con éxito:', registration);
-            })
-            .catch(function(error) {
-                console.log('Error al registrar el Service Worker:', error);
-            });
-        });
-    }
+function closeMenu() {
+   document.getElementById("myNav").style.width = "0"; // Cierra el menú
+}
 
-    // Función para manejar la instalación de la PWA
-    let deferredPrompt;
-    const installBanner = document.getElementById('install-banner');
-    const installButton = document.getElementById('install-button');
+// Este bloque registra el Service Worker
+if ('serviceWorker' in navigator) {
+   window.addEventListener('load', function() {
+       navigator.serviceWorker.register('worker.js') // Asegúrate que worker.js esté en la misma carpeta
+       .then(function(registration) {
+           console.log('Service Worker registrado con éxito:', registration);
+       })
+       .catch(function(error) {
+           console.log('Error al registrar el Service Worker:', error);
+       });
+   });
+}
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBanner.style.display = 'block'; // Mostrar el banner de instalación
-    });
+// Función para manejar la instalación de la PWA
+let deferredPrompt;
 
-    installButton.addEventListener('click', () => {
-      installBanner.style.display = 'none'; // Ocultar el banner
-      deferredPrompt.prompt(); // Mostrar el cuadro de diálogo de instalación
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('Usuario aceptó la instalación');
-        } else {
-          console.log('Usuario rechazó la instalación');
-        }
-      });
-    });
-  </script>
+const installBanner = document.getElementById('install-banner');
+const installButton = document.getElementById('install-button');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+   e.preventDefault();
+   deferredPrompt = e; // Guarda el evento
+   installBanner.style.display = 'block'; // Muestra el banner de instalación
+});
+
+installButton.addEventListener('click', () => {
+   installBanner.style.display = 'none'; // Oculta el banner
+   deferredPrompt.prompt(); // Muestra el cuadro de diálogo de instalación
+   deferredPrompt.userChoice.then((choiceResult) => {
+       if (choiceResult.outcome === 'accepted') {
+           console.log('Usuario aceptó la instalación');
+       } else {
+           console.log('Usuario rechazó la instalación');
+       }
+       deferredPrompt = null; // Limpia la variable
+   });
+});
+</script>
 </body>
 </html>
