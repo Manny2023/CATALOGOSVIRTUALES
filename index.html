@@ -73,7 +73,7 @@
     }
     main {
       padding: 20px;
-      margin-top: 20px;
+      margin-top: 70px; /* Para evitar que el contenido quede debajo del banner */
       text-align: center; /* Centrado del contenido */
     }
     main h1 {
@@ -130,7 +130,7 @@
 <body>
   <header>
     <span class="menu-btn" onclick="openMenu()">☰</span>
-    CATALOGOS VIRTULES
+    CATALOGOS VIRTUALES
   </header>
 
   <nav id="myNav">
@@ -166,51 +166,10 @@
     // Este bloque registra el Service Worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('worker.js?' + Math.random())
+            navigator.serviceWorker.register('worker.js') // Asegúrate que worker.js esté en la misma carpeta
             .then(function(registration) {
                 console.log('Service Worker registrado con éxito:', registration);
             })
             .catch(function(error) {
                 console.log('Error al registrar el Service Worker:', error);
             });
-        });
-    }
-
-    // Código para manejar el banner de instalación
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        showInstallBanner();
-    });
-
-    function showInstallBanner() {
-        const installBanner = document.getElementById('install-banner');
-        installBanner.style.display = 'block';
-
-        const installButton = document.getElementById('install-button');
-        installButton.addEventListener('click', () => {
-            installBanner.style.display = 'none';
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('Usuario aceptó la instalación');
-                } else {
-                    console.log('Usuario rechazó la instalación');
-                }
-                deferredPrompt = null;
-            });
-        });
-    }
-
-    function openMenu() {
-        document.getElementById("myNav").style.width = "250px";
-    }
-
-    function closeMenu() {
-        document.getElementById("myNav").style.width = "0";
-    }
-  </script>
-</body>
-</html>
