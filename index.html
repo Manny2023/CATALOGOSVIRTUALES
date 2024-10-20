@@ -11,11 +11,9 @@
 
   <!-- Favicon e íconos -->
   <link rel="icon" href="/ruta-al-logo/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="
-https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux68PadN_lIUO-774YjDf-ZSvWLsRqRrAOCqmNzRmNfo3UkNh_kKFeITDEhFiSpL77I7w5Ry7670YxxZtIWuRDpoRL9jUef6ycFzd8Mf-NPR710jg4xN8TMQAS6KbCXvRI0r57pm6rIBc1OHrUL83p_LUXCWVhNOLFo5qyEKqn8/s180/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux68PadN_lIUO-774YjDf-ZSvWLsRqRrAOCqmNzRmNfo3UkNh_kKFeITDEhFiSpL77I7w5Ry7670YxxZtIWuRDpoRL9jUef6ycFzd8Mf-NPR710jg4xN8TMQAS6KbCXvRI0r57pm6rIBc1OHrUL83p_LUXCWVhNOLFo5qyEKqn8/s180/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKKdAL_4jH9recUZix18lMrP6dfqqUAcmfDFm9zwSELnq4MwJVMHY4wvNdIbyp1QEw0Gr8lTR61l2t4sufBah-tyLKcN0l2PEJz7ngIfT77CCm_09dacwx1Mw65BzUVZNVYrQrC08o76ULsCGBFgyXAAabVgAzcmS_Y6dMGUCyMQ58h_Y58bYnlMm1ZGI/s32/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJx1aVxE_89OAItrvjC5gwWs3Elb4koell3i5PZNbav6f7qsyRVbskA5zVUQnA1Ru8m2d5KbI_kCRbxc9oEDQz-WwNjlmLMqXw0R8NVVVL_NQFVXqEOwTBkNRoYFDQXpaOxmvuB70KgerTcxko1V8JhF4k0CgHARwrA5Sxd6gG_xHAK9syrsAAEPZhxk4/s16/favicon-16x16.png
-">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJx1aVxE_89OAItrvjC5gwWs3Elb4koell3i5PZNbav6f7qsyRVbskA5zVUQnA1Ru8m2d5KbI_kCRbxc9oEDQz-WwNjlmLMqXw0R8NVVVL_NQFVXqEOwTBkNRoYFDQXpaOxmvuB70KgerTcxko1V8JhF4k0CgHARwrA5Sxd6gG_xHAK9syrsAAEPZhxk4/s16/favicon-16x16.png">
 
   <style>
     body {
@@ -75,7 +73,7 @@ https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux6
     }
     main {
       padding: 20px;
-      margin-top: 20px; /* Añadido para evitar que el contenido se superponga al menú */
+      margin-top: 20px;
       text-align: center; /* Centrado del contenido */
     }
     main h1 {
@@ -91,17 +89,21 @@ https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux6
       width: 80%;
       max-width: 200px;
     }
-    /* Banner de instalación */
+    /* Banner de instalación centrado en la parte superior */
     .install-banner {
       background-color: #333;
       color: white;
       text-align: center;
       padding: 10px;
       position: fixed;
-      bottom: 0;
-      width: 100%;
+      top: 0; /* Posición en la parte superior */
+      left: 50%; /* Centramos horizontalmente */
+      transform: translateX(-50%); /* Ajuste para centrarlo completamente */
+      width: 100%; /* Ancho total para pantallas pequeñas */
+      max-width: 600px; /* Ancho máximo para pantallas grandes */
       display: none; /* Inicialmente oculto */
-      z-index: 999;
+      z-index: 999; /* Por encima de otros elementos */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar el banner */
     }
     .install-banner button {
       background-color: #6200ea;
@@ -152,54 +154,63 @@ https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux6
       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 3"></a>
     </div>
   </main>
-    <!-- Banner de instalación -->
-    <div id="install-banner">
-        <p style="margin: 0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
-        <button id="install-button">Instalar</button>
-    </div>
 
-    <script src="main.js"></script>
-    <script>
-        // Este bloque registra el Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('worker.js?' + Math.random())
-                .then(function(registration) {
-                    console.log('Service Worker registrado con éxito:', registration);
-                })
-                .catch(function(error) {
-                    console.log('Error al registrar el Service Worker:', error);
-                });
+  <!-- Banner de instalación centrado en la parte superior -->
+  <div id="install-banner" class="install-banner">
+    <p style="margin: 0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
+    <button id="install-button">Instalar</button>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    // Este bloque registra el Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('worker.js?' + Math.random())
+            .then(function(registration) {
+                console.log('Service Worker registrado con éxito:', registration);
+            })
+            .catch(function(error) {
+                console.log('Error al registrar el Service Worker:', error);
             });
-        }
-
-        // Código para manejar el banner de instalación
-        let deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            showInstallBanner();
         });
+    }
 
-        function showInstallBanner() {
-            const installBanner = document.getElementById('install-banner');
-            installBanner.style.display = 'block';
+    // Código para manejar el banner de instalación
+    let deferredPrompt;
 
-            const installButton = document.getElementById('install-button');
-            installButton.addEventListener('click', () => {
-                installBanner.style.display = 'none';
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('Usuario aceptó la instalación');
-                    } else {
-                        console.log('Usuario rechazó la instalación');
-                    }
-                    deferredPrompt = null;
-                });
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        showInstallBanner();
+    });
+
+    function showInstallBanner() {
+        const installBanner = document.getElementById('install-banner');
+        installBanner.style.display = 'block';
+
+        const installButton = document.getElementById('install-button');
+        installButton.addEventListener('click', () => {
+            installBanner.style.display = 'none';
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('Usuario aceptó la instalación');
+                } else {
+                    console.log('Usuario rechazó la instalación');
+                }
+                deferredPrompt = null;
             });
-        }
-    </script>
+        });
+    }
+
+    function openMenu() {
+        document.getElementById("myNav").style.width = "250px";
+    }
+
+    function closeMenu() {
+        document.getElementById("myNav").style.width = "0";
+    }
+  </script>
 </body>
 </html>
