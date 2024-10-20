@@ -99,110 +99,105 @@
       bottom: 0;
       width: 100%;
       display: none; /* Inicialmente oculto */
-      z-index: 999;
-      animation: slideUp 0.5s ease-out forwards;
+      z-index: 999; 
     }
     .install-banner button {
-      background-color: #6200ea;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 16px;
+      background-color: #6200ea; 
+      color: white; 
+      border: none; 
+      padding: 10px 20px; 
+      cursor: pointer; 
     }
     .install-banner button:hover {
-      background-color: #4500b3;
-    }
-
-    @keyframes slideUp {
-      from {
-        transform: translateY(100%);
-      }
-      to {
-        transform: translateY(0);
-      }
+        background-color:#4500b3; 
     }
 
     /* Responsive */
     @media screen and (max-width: 768px) {
-      header {
-        font-size: 18px;
-      }
-      nav a {
-        font-size: 16px;
-      }
+        header {
+            font-size:18px; 
+        }
+        nav a {
+            font-size :16px; 
+        }
     }
-  </style>
+    
+</style>
 </head>
 <body>
-  <header>
-    <span class="menu-btn" onclick="openMenu()">☰</span>
-    Mi PWA Responsive con Imagen
-  </header>
+<header>
+   <span class="menu-btn" onclick="openMenu()">☰</span>
+   Mi PWA Responsive con Imagen
+</header>
 
-  <nav id="myNav">
-    <a href="javascript:void(0)" class="menu-close-btn" onclick="closeMenu()">&times;</a>
-    <img src="https://example.com/menu-image.png" alt="Imagen del Menú">
-    <a href="#home">Inicio</a>
-    <a href="#services">Servicios</a>
-    <a href="#contact">Contacto</a>
-    <a href="#about">Acerca de</a>
-  </nav>
+<nav id="myNav">
+   <a href="javascript:void(0)" class="menu-close-btn" onclick="closeMenu()">&times;</a>
+   <img src="https://example.com/menu-image.png" alt="Imagen del Menú">
+   <a href="#home">Inicio</a>
+   <a href="#services">Servicios</a>
+   <a href="#contact">Contacto</a>
+   <a href="#about">Acerca de</a>
+</nav>
 
-  <main>
-    <h1>CATALOGOS VIRTUALES</h1>
-    <p>A continuación, encontrarás algunos botones con imágenes. Haz clic en ellos para más opciones.</p>
-    
-    <div class="button-container">
-      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 1"></a>
-      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 2"></a>
-      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 3"></a>
-    </div>
-  </main>
+<main>
+   <h1>CATALOGOS VIRTUALES</h1>
+   <p>A continuación, encontrarás algunos botones con imágenes. Haz clic en ellos para más opciones.</p>
 
-  <div class="install-banner" id="installBanner">
-    <p>¡Para mejor funcionamiento, instala nuestra PWA en tu dispositivo!</p>
-    <button id="installButton">Instalar</button>
-  </div>
+   <div class="button-container">
+       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 1"></a>
+       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 2"></a>
+       <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 3"></a>
+   </div>
+</main>
 
-  <script>
-    function openMenu() {
-      document.getElementById("myNav").style.width = "250px";
-    }
+<div class="install-banner" id="installBanner">
+   <p>¡Para mejor funcionamiento, instala nuestra PWA en tu dispositivo!</p>
+   <button id="installButton">Instalar</button>
+</div>
 
-    function closeMenu() {
-      document.getElementById("myNav").style.width = "0";
-    }
+<script>
+// Funciones para abrir y cerrar el menú
+function openMenu() {
+   document.getElementById("myNav").style.width = "250px";
+}
 
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then((registration) => {
-            console.log('Service Worker registrado con éxito:', registration);
-          })
-          .catch((error) => {
-            console.error('Error al registrar el Service Worker:', error);
-          });
-      });
-    }
+function closeMenu() {
+   document.getElementById("myNav").style.width = "0";
+}
 
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      document.getElementById('installBanner').style.display = 'block';
-    });
+// Registro del Service Worker
+if ('serviceWorker' in navigator) {
+   window.addEventListener('load', () => {
+       navigator.serviceWorker.register('/service-worker.js')
+       .then((registration) => {
+           console.log('Service Worker registrado con éxito:', registration);
+       })
+       .catch((error) => {
+           console.error('Error al registrar el Service Worker:', error);
+       });
+   });
+}
 
-    document.getElementById('installButton').addEventListener('click', () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          console.log(choiceResult.outcome);
-          deferredPrompt = null;
-          document.getElementById('installBanner').style.display = 'none';
-        });
-      }
-    });
-  </script>
+// Manejo del evento beforeinstallprompt
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+   e.preventDefault(); // Previene que aparezca el prompt por defecto
+   deferredPrompt = e; // Guarda el evento
+   document.getElementById('installBanner').style.display = 'block'; // Muestra el banner de instalación
+});
+
+// Evento para el botón de instalación
+document.getElementById('installButton').addEventListener('click', () => {
+   if (deferredPrompt) {
+       deferredPrompt.prompt(); // Muestra el prompt de instalación
+       deferredPrompt.userChoice.then((choiceResult) => {
+           console.log(choiceResult.outcome);
+           deferredPrompt = null; // Limpia la variable
+           document.getElementById('installBanner').style.display = 'none'; // Oculta el banner
+       });
+   }
+});
+</script>
 </body>
 </html>
