@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ff0000">
-  <link rel="manifest" href="/manifest.json"> <!-- Enlace al manifest -->
   <title>Catálogos Virtuales</title>
 
+  <!-- Favicon e íconos -->
   <link rel="icon" href="/ruta-al-logo/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux68PadN_lIUO-774YjDf-ZSvWLsRqRrAOCqmNzRmNfo3UkNh_kKFeITDEhFiSpL77I7w5Ry7670YxxZtIWuRDpoRL9jUef6ycFzd8Mf-NPR710jg4xN8TMQAS6KbCXvRI0r57pm6rIBc1OHrUL83p_LUXCWVhNOLFo5qyEKqn8/s180/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKKdAL_4jH9recUZix18lMrP6dfqqUAcmfDFm9zwSELnq4MwJVMHY4wvNdIbyp1QEw0Gr8lTR61l2t4sufBah-tyLKcN0l2PEJz7ngIfT77CCm_09dacwx1Mw65BzUVZNVYrQrC08o76ULsCGBFgyXAAabVgAzcmS_Y6dMGUCyMQ58h_Y58bYnlMm1ZGI/s32/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJx1aVxE_89OAItrvjC5gwWs3Elb4koell3i5PZNbav6f7qsyRVbskA5zVUQnA1Ru8m2d5KbI_kCRbxc9oEDQz-WwNjlmLMqXw0R8NVVVL_NQFVXqEOwTBkNRoYFDQXpaOxmvuB70KgerTcxko1V8JhF4k0CgHARwrA5Sxd6gG_xHAK9syrsAAEPZhxk4/s16/favicon-16x16.png">
+  
+  <!-- Enlace al manifest.json -->
+  <link rel="manifest" href="/manifest.json">
 
   <style>
     body {
@@ -88,33 +91,28 @@
       width: 80%;
       max-width: 200px;
     }
-    #install-banner {
-      display: none; /* Oculto por defecto */
+    .install-banner {
+      background-color: #28a745; /* Verde */
+      color: white;
+      text-align: center;
+      padding: 10px;
       position: fixed;
       bottom: 0;
       width: 100%;
-      background-color: #4CAF50; /* Color verde */
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-      z-index: 1000;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-      border-radius: 10px 10px 0 0; /* Bordes redondeados */
-      font-family: Arial, sans-serif; /* Fuente */
+      display: none;
+      z-index: 999;
     }
-    #install-button {
-      background-color: #fff; /* Botón blanco */
-      color: #4CAF50; /* Texto verde */
+    .install-banner button {
+      background-color: #fff; /* Color del botón */
+      color: #28a745; /* Color del texto */
       border: none;
-      border-radius: 5px;
       padding: 10px 20px;
-      margin-left: 10px;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
+      font-size: 16px;
+      border-radius: 5px; /* Esquinas redondeadas */
     }
-    #install-button:hover {
-      background-color: #f1f1f1; /* Cambio de color al pasar el ratón */
-      transform: scale(1.05); /* Efecto de aumento */
+    .install-banner button:hover {
+      background-color: #f2f2f2; /* Color al pasar el ratón */
     }
     @media screen and (max-width: 768px) {
       header {
@@ -129,7 +127,7 @@
 <body>
   <header>
     <span class="menu-btn" onclick="openMenu()">☰</span>
-    CATALOGOS VIRTUALES
+    CATÁLOGOS VIRTUALES
   </header>
 
   <nav id="myNav">
@@ -147,12 +145,25 @@
   </main>
 
   <!-- Banner de instalación -->
-  <div id="install-banner">
-    <p style="margin: 0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
-    <button id="install-button">Instalar</button>
+  <div class="install-banner" id="installBanner">
+    <p>Instala esta aplicación en tu dispositivo</p>
+    <button id="installButton">Instalar</button>
   </div>
 
+  <!-- Registro del Service Worker -->
   <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch((error) => {
+          console.log('Error al registrar el Service Worker:', error);
+        });
+      });
+    }
+
     function openMenu() {
       document.getElementById("myNav").style.width = "250px";
     }
@@ -161,45 +172,25 @@
       document.getElementById("myNav").style.width = "0";
     }
 
-    // Registro del Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('worker.js?' + Math.random())
-        .then(function(registration) {
-          console.log('Service Worker registrado con éxito:', registration);
-        })
-        .catch(function(error) {
-          console.log('Error al registrar el Service Worker:', error);
-        });
-      });
-    }
-
-    // Manejo del banner de instalación
     let deferredPrompt;
+    const installBanner = document.getElementById('installBanner');
+    const installButton = document.getElementById('installButton');
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      showInstallBanner();
+      installBanner.style.display = 'block';
     });
 
-    function showInstallBanner() {
-      const installBanner = document.getElementById('install-banner');
-      installBanner.style.display = 'flex'; // Muestra el banner
-    }
-
-    const installButton = document.getElementById('install-button');
     installButton.addEventListener('click', () => {
-      const installBanner = document.getElementById('install-banner');
-      installBanner.style.display = 'none'; // Oculta el banner
+      installBanner.style.display = 'none';
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
-          console.log('Usuario aceptó la instalación');
+          console.log('User accepted the A2HS prompt');
         } else {
-          console.log('Usuario rechazó la instalación');
+          console.log('User dismissed the A2HS prompt');
         }
-        deferredPrompt = null; // Resetea el prompt
       });
     });
   </script>
