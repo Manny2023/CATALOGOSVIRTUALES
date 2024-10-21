@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff0000">
+  <title>Página 2 - Catalogos Virtuales</title>
+
+  <link rel="icon" href="/ruta-al-logo/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux68PadN_lIUO-774YjDf-ZSvWLsRqRrAOCqmNzRmNfo3UkNh_kKFeITDEhFiSpL77I7w5Ry7670YxxZtIWuRDpoRL9jUef6ycFzd8Mf-NPR710jg4xN8TMQAS6KbCXvRI0r57pm6rIBc1OHrUL83p_LUXCWVhNOLFo5qyEKqn8/s180/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKKdAL_4jH9recUZix18lMrP6dfqqUAcmfDFm9zwSELnq4MwJVMHY4wvNdIbyp1QEw0Gr8lTR61l2t4sufBah-tyLKcN0l2PEJz7ngIfT77CCm_09dacwx1Mw65BzUVZNVYrQrC08o76ULsCGBFgyXAAabVgAzcmS_Y6dMGUCyMQ58h_Y58bYnlMm1ZGI/s32/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJx1aVxE_89OAItrvjC5gwWs3Elb4koell3i5PZNbav6f7qsyRVbskA5zVUQnA1Ru8m2d5KbI_kCRbxc9oEDQz-WwNjlmLMqXw0R8NVVVL_NQFVXqEOwTBkNRoYFDQXpaOxmvuB70KgerTcxko1V8JhF4k0CgHARwrA5Sxd6gG_xHAK9syrsAAEPZhxk4/s16/favicon-16x16.png">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #ff0000; /* Fondo rojo */
+      color: white;
+      padding: 15px;
+      text-align: center;
+      position: relative;
+      font-size: 24px; /* Aumentar tamaño de fuente */
+      font-weight: bold; /* Negrita para resaltar las letras */
+    }
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    nav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    nav a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      background-color: #575757;
+    }
+    nav img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .menu-close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 36px;
+    }
+    main {
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+    }
+    main h1 {
+      margin-bottom: 20px;
+    }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .button-container img {
+      margin: 10px 0;
+      width: 80%;
+      max-width: 200px;
+    }
+    .install-banner {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: none;
+      z-index: 999;
+    }
+    .install-banner button {
+      background-color: #6200ea;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .install-banner button:hover {
+      background-color: #4500b3;
+    }
+    @media screen and (max-width: 768px) {
+      header {
+        font-size: 18px;
+      }
+      nav a {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="menu-btn" onclick="openMenu()">☰</span>
+    CATALOGOS VIRTUALES - PÁGINA 2
+  </header>
+
+  <nav id="myNav">
+    <a href="javascript:void(0)" class="menu-close-btn" onclick="closeMenu()">&times;</a>
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTShEIt3vRu7H_cFeBJuHuvGtlJT1MH5zB8GDuOVytHKi7ts9tTCpX4hwhvL7Yy9sL1XEApjQCWq9yD_RZ_DUkDZQ12cdhZQL2kumtcKoc8CbHb6AH-ZAqitAYTE7DQng1KkNnUnN1I5AY0U2g7dcnABbNFcnbXBKTprf4GFATPRG2s6MgE09ZaHHUDxQ/s192/android-chrome-192x192.png" alt="Imagen del Menú">
+    <a href="pagina1.html">Página 1</a>
+    <a href="pagina2.html">Página 2</a>
+    <a href="pagina3.html">Página 3</a>
+    <a href="pagina4.html">Página 4</a>
+    <a href="pagina5.html">Página 5</a>
+  </nav>
+
+  <main>
+    <h1>PÁGINA 2 - CATALOGOS VIRTUALES</h1>
+    <p>Aquí puedes agregar el contenido específico para la Página 2.</p>
+    
+    <div class="button-container">
+      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 1"></a>
+      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 2"></a>
+      <a href="#"><img src="https://via.placeholder.com/150" alt="Botón 3"></a>
+    </div>
+  </main>
+
+  <script>
+    function openMenu() {
+      document.getElementById("myNav").style.width = "250px";
+    }
+
+    function closeMenu() {
+      document.getElementById("myNav").style.width = "0";
+    }
+  </script>
+</body>
+</html>
