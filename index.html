@@ -163,10 +163,7 @@
 </main>
 
 <!-- Banner de instalación centrado en la parte superior -->
-<div id="install-banner" class="install-banner">
-   <p style="margin :0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
-   <button id="install-button">Instalar</button>
-</div>
+
 
 <script>
 // Funciones para abrir y cerrar el menú
@@ -178,43 +175,54 @@ function closeMenu() {
    document.getElementById("myNav").style.width = "0"; // Cierra el menú
 }
 
-// Este bloque registra el Service Worker
-if ('serviceWorker' in navigator) {
-   window.addEventListener('load', function() {
-       navigator.serviceWorker.register('worker.js') // Asegúrate que worker.js esté en la misma carpeta
-       .then(function(registration) {
-           console.log('Service Worker registrado con éxito:', registration);
-       })
-       .catch(function(error) {
-           console.log('Error al registrar el Service Worker:', error);
-       });
-   });
-}
+ <!-- Banner de instalación -->
+    <div id="install-banner">
+        <p style="margin: 0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
+        <button id="install-button">Instalar</button>
+    </div>
 
-// Función para manejar la instalación de la PWA
-let deferredPrompt;
+    <script src="main.js"></script>
+    <script>
+        // Este bloque registra el Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('worker.js?' + Math.random())
+                .then(function(registration) {
+                    console.log('Service Worker registrado con éxito:', registration);
+                })
+                .catch(function(error) {
+                    console.log('Error al registrar el Service Worker:', error);
+                });
+            });
+        }
 
-const installBanner = document.getElementById('install-banner');
-const installButton = document.getElementById('install-button');
+        // Código para manejar el banner de instalación
+        let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-   e.preventDefault();
-   deferredPrompt = e; // Guarda el evento
-   installBanner.style.display = 'block'; // Muestra el banner de instalación
-});
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            showInstallBanner();
+        });
 
-installButton.addEventListener('click', () => {
-   installBanner.style.display = 'none'; // Oculta el banner
-   deferredPrompt.prompt(); // Muestra el cuadro de diálogo de instalación
-   deferredPrompt.userChoice.then((choiceResult) => {
-       if (choiceResult.outcome === 'accepted') {
-           console.log('Usuario aceptó la instalación');
-       } else {
-           console.log('Usuario rechazó la instalación');
-       }
-       deferredPrompt = null; // Limpia la variable
-   });
-});
-</script>
+        function showInstallBanner() {
+            const installBanner = document.getElementById('install-banner');
+            installBanner.style.display = 'block';
+
+            const installButton = document.getElementById('install-button');
+            installButton.addEventListener('click', () => {
+                installBanner.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('Usuario aceptó la instalación');
+                    } else {
+                        console.log('Usuario rechazó la instalación');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        }
+    </script>
 </body>
 </html>
