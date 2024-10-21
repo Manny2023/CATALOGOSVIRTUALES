@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#ff0000">
-  <title>Catalogos Virtuales</title>
+  <link rel="manifest" href="/manifest.json"> <!-- Enlace al manifest -->
+  <title>Catálogos Virtuales</title>
 
   <link rel="icon" href="/ruta-al-logo/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux68PadN_lIUO-774YjDf-ZSvWLsRqRrAOCqmNzRmNfo3UkNh_kKFeITDEhFiSpL77I7w5Ry7670YxxZtIWuRDpoRL9jUef6ycFzd8Mf-NPR710jg4xN8TMQAS6KbCXvRI0r57pm6rIBc1OHrUL83p_LUXCWVhNOLFo5qyEKqn8/s180/apple-touch-icon.png">
@@ -18,13 +19,13 @@
       background-color: #f4f4f4;
     }
     header {
-      background-color: #ff0000; /* Fondo rojo */
+      background-color: #ff0000;
       color: white;
       padding: 15px;
       text-align: center;
       position: relative;
-      font-size: 24px; /* Aumentar tamaño de fuente */
-      font-weight: bold; /* Negrita para resaltar las letras */
+      font-size: 24px;
+      font-weight: bold;
     }
     .menu-btn {
       font-size: 24px;
@@ -145,6 +146,7 @@
     <iframe src="https://mannymansistemapps.blogspot.com/2024/10/catalogo-1.html" style="width: 100%; height: 800px; border: none;"></iframe>
   </main>
 
+  <!-- Banner de instalación -->
   <div id="install-banner">
     <p style="margin: 0;">¡Instala nuestra aplicación para una mejor experiencia!</p>
     <button id="install-button">Instalar</button>
@@ -154,48 +156,52 @@
     function openMenu() {
       document.getElementById("myNav").style.width = "250px";
     }
+
     function closeMenu() {
       document.getElementById("myNav").style.width = "0";
     }
 
+    // Registro del Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('worker.js?' + Math.random())
+        .then(function(registration) {
+          console.log('Service Worker registrado con éxito:', registration);
+        })
+        .catch(function(error) {
+          console.log('Error al registrar el Service Worker:', error);
+        });
+      });
+    }
+
+    // Manejo del banner de instalación
     let deferredPrompt;
-    const installBanner = document.getElementById('install-banner');
-    const installButton = document.getElementById('install-button');
 
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      installBanner.style.display = 'block'; // Muestra el banner
+      showInstallBanner();
     });
 
-    installButton.addEventListener('click', () => {
-      installBanner.style.display = 'none'; // Oculta el banner
-      if (deferredPrompt) {
-        deferredPrompt.prompt(); // Muestra el diálogo de instalación
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('Usuario aceptó la instalación');
-          } else {
-            console.log('Usuario rechazó la instalación');
-          }
-          deferredPrompt = null; // Resetea el prompt
-        });
-      }
-    });
-
-    window.addEventListener('appinstalled', () => {
-      installBanner.style.display = 'none'; // Oculta el banner si la app está instalada
-    });
-  </script>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/worker.js')
-          .then(reg => console.log('Service Worker registrado con éxito', reg))
-          .catch(err => console.error('Error al registrar el Service Worker', err));
-      });
+    function showInstallBanner() {
+      const installBanner = document.getElementById('install-banner');
+      installBanner.style.display = 'flex'; // Muestra el banner
     }
+
+    const installButton = document.getElementById('install-button');
+    installButton.addEventListener('click', () => {
+      const installBanner = document.getElementById('install-banner');
+      installBanner.style.display = 'none'; // Oculta el banner
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Usuario aceptó la instalación');
+        } else {
+          console.log('Usuario rechazó la instalación');
+        }
+        deferredPrompt = null; // Resetea el prompt
+      });
+    });
   </script>
 </body>
 </html>
