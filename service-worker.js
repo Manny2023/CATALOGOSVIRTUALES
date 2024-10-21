@@ -1,11 +1,7 @@
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then((registration) => {
-        console.log('Service Worker registrado con éxito:', registration);
-      })
-      .catch((error) => {
-        console.log('Registro de Service Worker fallido:', error);
-      });
-  });
-}
+self.addEventListener('install', function(event) {
+  console.log('Service Worker instalado');
+});
+
+self.addEventListener('fetch', function(event) {
+  event.respondWith(fetch(event.request));
+});
