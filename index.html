@@ -6,10 +6,14 @@
   <meta name="theme-color" content="#ff0000">
   <title>Catálogos Virtuales</title>
 
+  <!-- Favicon e íconos -->
   <link rel="icon" href="/ruta-al-logo/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="180x180" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrNS3wMsTWGQ-2w0OIux68PadN_lIUO-774YjDf-ZSvWLsRqRrAOCqmNzRmNfo3UkNh_kKFeITDEhFiSpL77I7w5Ry7670YxxZtIWuRDpoRL9jUef6ycFzd8Mf-NPR710jg4xN8TMQAS6KbCXvRI0r57pm6rIBc1OHrUL83p_LUXCWVhNOLFo5qyEKqn8/s180/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgKKdAL_4jH9recUZix18lMrP6dfqqUAcmfDFm9zwSELnq4MwJVMHY4wvNdIbyp1QEw0Gr8lTR61l2t4sufBah-tyLKcN0l2PEJz7ngIfT77CCm_09dacwx1Mw65BzUVZNVYrQrC08o76ULsCGBFgyXAAabVgAzcmS_Y6dMGUCyMQ58h_Y58bYnlMm1ZGI/s32/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJx1aVxE_89OAItrvjC5gwWs3Elb4koell3i5PZNbav6f7qsyRVbskA5zVUQnA1Ru8m2d5KbI_kCRbxc9oEDQz-WwNjlmLMqXw0R8NVVVL_NQFVXqEOwTBkNRoYFDQXpaOxmvuB70KgerTcxko1V8JhF4k0CgHARwrA5Sxd6gG_xHAK9syrsAAEPZhxk4/s16/favicon-16x16.png">
+  
+  <!-- Enlace al manifest.json -->
+  <link rel="manifest" href="/manifest.json">
 
   <style>
     body {
@@ -18,13 +22,13 @@
       background-color: #f4f4f4;
     }
     header {
-      background-color: #ff0000; /* Fondo rojo */
+      background-color: #ff0000;
       color: white;
       padding: 15px;
       text-align: center;
       position: relative;
-      font-size: 24px; /* Aumentar tamaño de fuente */
-      font-weight: bold; /* Negrita para resaltar las letras */
+      font-size: 24px;
+      font-weight: bold;
     }
     .menu-btn {
       font-size: 24px;
@@ -139,6 +143,12 @@
     <iframe src="https://mannymansistemapps.blogspot.com/2024/10/catalogo-1.html" style="width: 100%; height: 800px; border: none;"></iframe>
   </main>
 
+  <!-- Banner de instalación -->
+  <div class="install-banner" id="installBanner">
+    <p>Instala esta aplicación en tu dispositivo</p>
+    <button id="installButton">Instalar</button>
+  </div>
+
   <script>
     function openMenu() {
       document.getElementById("myNav").style.width = "250px";
@@ -147,6 +157,33 @@
     function closeMenu() {
       document.getElementById("myNav").style.width = "0";
     }
+
+    let deferredPrompt;
+    const installBanner = document.getElementById('installBanner');
+    const installButton = document.getElementById('installButton');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBanner.style.display = 'block';
+    });
+
+    installButton.addEventListener('click', () => {
+      installBanner.style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        deferredPrompt = null;
+      });
+    });
+
+    window.addEventListener('appinstalled', () => {
+      console.log('PWA instalada');
+    });
   </script>
 </body>
 </html>
