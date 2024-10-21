@@ -1,10 +1,11 @@
 {
   "name": "CATALOGOS VIRTUALES",
   "short_name": "c.virtuales",
-  "start_url": "./",
+ "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#f4f4f4",
-  "theme_color": "#6200ea",
+  "orientation": "portrait",
+  "background_color": "#00060a",
+  "theme_color": "#00060a"
   "icons": [
     {
       "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTShEIt3vRu7H_cFeBJuHuvGtlJT1MH5zB8GDuOVytHKi7ts9tTCpX4hwhvL7Yy9sL1XEApjQCWq9yD_RZ_DUkDZQ12cdhZQL2kumtcKoc8CbHb6AH-ZAqitAYTE7DQng1KkNnUnN1I5AY0U2g7dcnABbNFcnbXBKTprf4GFATPRG2s6MgE09ZaHHUDxQ/s192/android-chrome-192x192.png",
